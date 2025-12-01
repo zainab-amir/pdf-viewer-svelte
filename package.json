@@ -1,0 +1,67 @@
+{
+  "name": "pdf-viewer-svelte",
+  "version": "0.1.0",
+  "description": "A simple PDF viewer component for Svelte 5 with TypeScript support",
+  "author": "Zainab Amir",
+  "license": "MIT",
+  "type": "module",
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "packageManager": "pnpm@10.5.2+sha256.79a98daa90248b50815e31460790f118c56fe099113370826caa0153be6daba5",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "!dist/**/*.test.*",
+    "!dist/**/*.spec.*"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "example": "vite --open /example/index.html",
+    "package": "svelte-package -i src/lib -o dist",
+    "prepublishOnly": "npm run package",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch"
+  },
+  "peerDependencies": {
+    "svelte": "^5.0.0"
+  },
+  "dependencies": {
+    "pdfjs-dist": "^4.0.0"
+  },
+  "devDependencies": {
+    "@sveltejs/package": "^2.0.0",
+    "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "svelte": "^5.0.0",
+    "svelte-check": "^4.0.0",
+    "tslib": "^2.4.1",
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0"
+  },
+  "keywords": [
+    "svelte",
+    "svelte5",
+    "pdf",
+    "pdf-viewer",
+    "pdfjs",
+    "typescript",
+    "component",
+    "viewer",
+    "document",
+    "reader",
+    "frontend",
+    "ui",
+    "library",
+    "embed",
+    "display"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zainab-amir/pdf-viewer-svelte"
+  }
+}
