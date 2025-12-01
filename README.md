@@ -1,3 +1,6 @@
+[![npm version](https://badge.fury.io/js/pdf-viewer-svelte.svg)](https://www.npmjs.com/package/pdf-viewer-svelte)
+[![npm downloads](https://img.shields.io/npm/dm/pdf-viewer-svelte.svg)](https://www.npmjs.com/package/pdf-viewer-svelte)
+
 # PDF Viewer Svelte
 
 A simple, lightweight PDF viewer component for Svelte 5 with TypeScript support. Built on top of PDF.js
