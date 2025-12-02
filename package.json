@@ -1,6 +1,6 @@
 {
   "name": "pdf-viewer-svelte",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple PDF viewer component for Svelte 5 with TypeScript support",
   "author": "Zainab Amir",
   "license": "MIT",
