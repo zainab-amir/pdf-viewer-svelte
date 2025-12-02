@@ -46,19 +46,12 @@
   "keywords": [
     "svelte",
     "svelte5",
+    "svelte-5",
+    "svelte-pdf",
     "pdf",
-    "pdf-viewer",
     "pdfjs",
-    "typescript",
-    "component",
-    "viewer",
-    "document",
-    "reader",
-    "frontend",
-    "ui",
-    "library",
-    "embed",
-    "display"
+    "pdf-viewer",
+    "typescript"
   ],
   "repository": {
     "type": "git",
