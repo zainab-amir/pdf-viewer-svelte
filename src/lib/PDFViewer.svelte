@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { PDFDocumentProxy } from 'pdfjs-dist';
+  import type { PDFDocumentProxy, PDFDocumentLoadingTask } from 'pdfjs-dist';
   import * as pdfjs from 'pdfjs-dist';
   import { onMount } from 'svelte';
 
@@ -13,16 +13,21 @@
 
   onMount(async () => {
     pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.mjs`;
+  });
 
-    try {
-      pdfDocument = await pdfjs.getDocument(url).promise;
-      totalPages = pdfDocument.numPages;
-      isLoading = false;
-    } catch (error) {
-      console.error(error);
-      hasError = true;
-      isLoading = false;
-    }
+  $effect(() => {
+    if (!url) return;
+
+    const loadingTask = pdfjs.getDocument(url);
+    isLoading = true;
+    hasError = false;
+
+    void loadPDFDocument(url, loadingTask);
+
+    // Cleanup
+    return () => {
+      void loadingTask.destroy();
+    };
   });
 
   // Render all pages when PDF is loaded.
@@ -31,6 +36,23 @@
       void renderAllPages();
     }
   });
+
+  async function loadPDFDocument(currentUrl: string, loadingTask: PDFDocumentLoadingTask): Promise<PDFDocumentProxy> {
+    try {
+      pdfDocument = await loadingTask.promise;
+
+      if (currentUrl === url) {
+        totalPages = pdfDocument.numPages;
+        isLoading = false;
+      }
+    } catch (error) {
+      if (currentUrl === url) {
+        console.error(error);
+        hasError = true;
+        isLoading = false;
+      }
+    }
+  }
 
   async function renderAllPages() {
     if (!pdfDocument || !containerElement) return;
