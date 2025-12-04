@@ -5,5 +5,8 @@ export default defineConfig({
   plugins: [svelte()],
   optimizeDeps: {
     include: ['pdfjs-dist']
+  },
+  resolve: {
+    conditions: ['browser', 'default']
   }
 });
